@@ -80,6 +80,12 @@ body {
   position: absolute;
 }
 
+.text-area {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 1;
+}
+
 #arb-track {
   display: flex;
   margin: 0 50%;

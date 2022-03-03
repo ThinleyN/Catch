@@ -6,7 +6,6 @@ function randomizePositionText() {
     const contentEdges = content.getBoundingClientRect();
 
     const textAreas = document.getElementsByClassName("text-area");
-    // console.log(textAreas.item(0))
     for(let i = 0; i < textAreas.length;i++){
         const top =  Math.floor(Math.random() * (heightOftContent/2 - 0 + 1) + 0);
         const left =  Math.floor(Math.random() * (widthOfContent/2 - 0 + 1) + 0);
@@ -18,8 +17,6 @@ function randomizePositionText() {
         }
         
         const boundingArea = textAreas.item(i).getBoundingClientRect();
-        console.log(textAreas.item(i))
-        console.log(boundingArea,"boudn")
         if(boundingArea.right > contentEdges.right){
             textAreas.item(i).style.left = 0 +'px';
         }
@@ -31,11 +28,24 @@ function randomizePositionText() {
     }
 }
 
+function addEventsForNav() {
+    const navText = document.getElementsByClassName("navigation-text");
+
+    $(navText).each(function(i,nav) {
+        console.log(nav,"navv")
+        nav.addEventListener("click", function() {
+            const navData = $(nav).attr("data");
+            const textArea = $(`#${navData}`);
+            textArea.css("visibility","visible");
+            textArea.css("display","none");
+            textArea.slideDown(2000);
+        })
+    });
+}
+
 function onload() {
     const content = document.getElementById("content");
     const arbTrack =  document.getElementById("arb-track");
-
-    console.log(content.style)
 
     const styleOfContent = getComputedStyle(content);
 
@@ -43,6 +53,8 @@ function onload() {
     arbTrack.style.height = styleOfContent.height;
 
     randomizePositionText();
+
+    addEventsForNav();
 
     // arbTrack.style.width = content.style.width;
     // arbTrack.style.height = content.style.height; 
