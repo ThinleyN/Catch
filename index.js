@@ -1,3 +1,6 @@
+let mainAnimation = null;
+let lastPoint  = null;
+
 function randomizePositionText() {
     const content = document.getElementById("content");
     const styleOfContent = getComputedStyle(content);
@@ -32,15 +35,37 @@ function addEventsForNav() {
     const navText = document.getElementsByClassName("navigation-text");
 
     $(navText).each(function(i,nav) {
-        console.log(nav,"navv")
         nav.addEventListener("click", function() {
             const navData = $(nav).attr("data");
             const textArea = $(`#${navData}`);
             textArea.css("visibility","visible");
             textArea.css("display","none");
             textArea.slideDown(2000);
+            mainAnimation.resume()
         })
     });
+}
+
+function animate(){
+map                 = Snap('#main-path');
+spaceship           = Snap('.circle');
+spaceshipbbox       = spaceship.getBBox();
+console.log(spaceshipbbox,spaceship,"asdf")
+
+flight_path = map;
+console.log(flight_path,"flight")
+flight_path_length  = Snap.path.getTotalLength(flight_path);
+console.log(flight_path_length,"finee")
+last_point          = flight_path.getPointAtLength(flight_path_length);
+
+mainAnimation = Snap.animate(0, flight_path_length, function( step ) {
+                moveToPoint = Snap.path.getPointAtLength( flight_path, step );
+                x = moveToPoint.x - (spaceshipbbox.width/2);
+                y = moveToPoint.y - (spaceshipbbox.height/2);
+                spaceship.transform('translate(' + x + ',' + y + ') rotate('+ (moveToPoint.alpha - 90)+', '+spaceshipbbox.cx+', '+spaceshipbbox.cy+')');
+            },3000, mina.easeout ,function(){
+                // ship_move_up();
+            });
 }
 
 function onload() {
@@ -55,9 +80,31 @@ function onload() {
     randomizePositionText();
 
     addEventsForNav();
+    animate();
 
-    // arbTrack.style.width = content.style.width;
-    // arbTrack.style.height = content.style.height; 
 }
 
 document.addEventListener("DOMContentLoaded", onload);
+
+
+
+function ship_move_up(){
+    spaceship.animate({'transform': 'translate(' + (last_point.x - (spaceshipbbox.width/2)) + ',' + (last_point.y - (spaceshipbbox.height / 2) - 20) + ')'},1300, function(){
+        ship_move_down();
+    });
+}
+function ship_move_down(){
+    spaceship.animate({'transform': 'translate(' + (last_point.x - (spaceshipbbox.width/2)) + ',' + (last_point.y - (spaceshipbbox.height / 2)) + ')'},1100, function(){
+        ship_move_up();
+    });
+}
+// function animate_thruster_up(){
+//     thruster.animate({'transform': 'translate(0,-5)'},100, function(){
+//         animate_thruster_down();
+//     });
+// }
+// function animate_thruster_down(){
+//     thruster.animate({'transform': 'translate(0,0)'},100, function(){
+//         animate_thruster_up();
+//     });
+// }
