@@ -1,5 +1,8 @@
 let mainAnimation = null;
 function animate(){
+    const trainSVG = $('.train-svg');
+    trainSVG.attr("x","0");
+    trainSVG.attr("y","0");
     map                 = Snap('#main-path');
     train           = Snap('.circle');
     trainbbox       = train.getBBox();
@@ -8,7 +11,7 @@ function animate(){
     train_path_length  = Snap.path.getTotalLength(train_path);
     last_point          = train_path.getPointAtLength(train_path_length);
     
-    mainAnimation = Snap.animate(train_path_length, 0, function( step ) {
+    mainAnimation = Snap.animate(0, train_path_length, function( step ) {
                     moveToPoint = Snap.path.getPointAtLength( train_path, step );
                     x = moveToPoint.x - (trainbbox.width/2);
                     y = moveToPoint.y - (trainbbox.height/2);
