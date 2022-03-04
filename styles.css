@@ -90,3 +90,7 @@ body {
   display: flex;
   margin: 0 50%;
 }
+
+.cls-3 {
+  fill: none !important;
+}
