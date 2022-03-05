@@ -6,6 +6,7 @@ function animate(){
     map                 = Snap('#main-path');
     train           = Snap('.circle');
     trainbbox       = train.getBBox();
+    $('.circle').attr("transform","");
     
     train_path = map;
     train_path_length  = Snap.path.getTotalLength(train_path);
@@ -16,8 +17,12 @@ function animate(){
                     x = moveToPoint.x - (trainbbox.width/2);
                     y = moveToPoint.y - (trainbbox.height/2);
                     train.transform('translate(' + x + ',' + y + ') rotate('+ (moveToPoint.alpha - 90)+', '+trainbbox.cx+', '+trainbbox.cy+')');
-                },30000, null ,function(){
-                    train_move_up();
+                },15000, null ,function(){
+                    // train_move_up();
+                    $('.train-svg').attr("x","999");
+                    $('.train-svg').attr("y","999");
+                    $('.circle').attr("transform", "");
+                    mainAnimation = null;
                 });
 }
     
