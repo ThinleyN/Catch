@@ -11,13 +11,12 @@ function addEventsForNav() {
             // mainAnimation.resume();
             if(!mainAnimation){
                 animate();
-                setTimeout(function(){
-                    !mainAnimation ? animate() : mainAnimation.pause();
-                },3000)
             }else{
                 mainAnimation.resume();
+            }
+            if(!lastRun){
                 setTimeout(function(){
-                    !mainAnimation ? animate() :  mainAnimation.pause();
+                    mainAnimation.pause();
                 },3000)
             }
         })
