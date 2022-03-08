@@ -25,7 +25,7 @@ function animate(){
         x = moveToPoint.x - (trainbbox.width/2);
         y = moveToPoint.y - (trainbbox.height/2);
         train.transform('translate(' + x + ',' + y + ') rotate('+ (moveToPoint.alpha - 90)+', '+trainbbox.cx+', '+trainbbox.cy+')');
-    },masterSpeed*numberOfTextArea, null ,function(){
+    },(masterSpeed*numberOfTextArea)*2, null ,function(){
         // train_move_up();
         $('.train-svg').attr("x","999");
         $('.train-svg').attr("y","800");
