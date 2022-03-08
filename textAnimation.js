@@ -6,6 +6,7 @@ function randomizePositionText() {
     const contentEdges = content.getBoundingClientRect();
 
     const textAreas = document.getElementsByClassName("text-area");
+    const randomIndex = Math.floor(Math.random() * (textAreas.length - 0 + 1)) + 0;
     for(let i = 0; i < textAreas.length;i++){
         const top =  Math.floor(Math.random() * (heightOftContent/2 - 0 + 1) + 0);
         const left =  Math.floor(Math.random() * (widthOfContent/2 - 0 + 1) + 0);
@@ -23,6 +24,10 @@ function randomizePositionText() {
 
         if(boundingArea.top + boundingArea.height > contentEdges.top + contentEdges.height){
             textAreas.item(i).style.top = 0 +'px';
+        }
+
+        if(i === randomIndex){
+            textAreas.item(i).style.color = "rgb(47,204,58)";
         }
 
     }
