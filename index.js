@@ -11,12 +11,15 @@ function addEventsForNav() {
             let interval = calculateLetterSpeed(text);
             showLetterbyLetter(textArea,text,0,interval);
             if(!mainAnimation){
+                $(document.body).addClass('no-interaction');
                 animate();
             }else{
+                $(document.body).addClass('no-interaction');
                 mainAnimation.resume();
             }
             if(!lastRun){
                 setTimeout(function(){
+                    $(document.body).removeClass('no-interaction');
                     mainAnimation.pause();
                 },masterSpeed)
             }
