@@ -8,7 +8,8 @@ function addEventsForNav() {
             textArea.css("visibility","visible");
             const text = textArea[0].innerHTML;
             textArea.empty();
-            showLetterbyLetter(textArea,text,0,20);
+            let interval = calculateLetterSpeed(text);
+            showLetterbyLetter(textArea,text,0,interval);
             if(!mainAnimation){
                 animate();
             }else{
@@ -17,7 +18,7 @@ function addEventsForNav() {
             if(!lastRun){
                 setTimeout(function(){
                     mainAnimation.pause();
-                },3000)
+                },masterSpeed)
             }
         })
     });

@@ -1,3 +1,4 @@
+let numberOfTextArea = 0;
 function randomizePositionText() {
     const content = document.getElementById("content");
     const styleOfContent = getComputedStyle(content);
@@ -7,6 +8,7 @@ function randomizePositionText() {
 
     const textAreas = document.getElementsByClassName("text-area");
     const randomIndex = Math.floor(Math.random() * (textAreas.length - 0 + 1)) + 0;
+    numberOfTextArea = textAreas.length;
     for(let i = 0; i < textAreas.length;i++){
         const top =  Math.floor(Math.random() * (heightOftContent/2 - 0 + 1) + 0);
         const left =  Math.floor(Math.random() * (widthOfContent/2 - 0 + 1) + 0);
