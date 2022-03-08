@@ -6,9 +6,9 @@ function addEventsForNav() {
             const navData = $(nav).attr("data");
             const textArea = $(`#${navData}`);
             textArea.css("visibility","visible");
-            textArea.css("display","none");
-            textArea.slideDown(3000);
-            // mainAnimation.resume();
+            const text = textArea[0].innerHTML;
+            textArea.empty();
+            showLetterbyLetter(textArea,text,0,20);
             if(!mainAnimation){
                 animate();
             }else{
