@@ -7,7 +7,8 @@ function addEventsForNav() {
             let navigateTo = $(nav).attr("ref");
             const textArea = $(`#${navData}`);
             textArea.css("visibility","visible");
-            const text = textArea[0].innerHTML;
+            let text = textArea[0].innerHTML;
+            text = String(text).substring(0,maxCharacters) + '...';
             textArea.empty();
             let interval = calculateLetterSpeed(text);
             showLetterbyLetter(textArea,text,0,interval);
@@ -46,7 +47,6 @@ function onload() {
     randomizePositionText();
 
     addEventsForNav();
-    // animate();
 
 }
 

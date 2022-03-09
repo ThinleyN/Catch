@@ -1,6 +1,7 @@
 body {
   font-family: 'PT Sans', sans-serif;
   color: rgb(64, 99, 244);
+  overflow: hidden;
 }
 .container svg {
   /* width: 100%;
