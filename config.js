@@ -1,4 +1,4 @@
-const masterSpeed = 12000;
+const masterSpeed = 20000;
 
 function calculateLetterSpeed(text) {
     let totalCharacters = text.length;

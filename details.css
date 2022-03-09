@@ -1,0 +1,61 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #e8e8e8;
+}
+
+.content {
+  width: 80%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.content h1 {
+  font-size: 24px;
+  font-weight: bold;
+  border-top: 2px solid black;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.content p {
+  margin-top: 30px;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
+.vimeo {
+  position: unset !important;
+  width: 80%;
+  margin: auto;
+}
+
+.textblock {
+  margin-top: 0 !important;
+}
+
+.explosion {
+  margin-top: 20px;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.explosion img {
+  max-width: 80%;
+  margin-bottom: 10px;
+}
+
+.book-link {
+  font-weight: bold;
+}
