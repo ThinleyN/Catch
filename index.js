@@ -4,7 +4,7 @@ function addEventsForNav() {
     $(navText).each(function(i,nav) {
         nav.addEventListener("click", function() {
             const navData = $(nav).attr("data");
-            const navigateTo = $(nav).attr("ref");
+            let navigateTo = $(nav).attr("ref");
             const textArea = $(`#${navData}`);
             textArea.css("visibility","visible");
             const text = textArea[0].innerHTML;
@@ -22,7 +22,12 @@ function addEventsForNav() {
                 setTimeout(function(){
                     $(document.body).removeClass('no-interaction');
                     mainAnimation.pause();
-                    // window.open('_link is here_', 'name'); cation
+                    var loc = window.location.pathname;
+                    var dir = loc.substring(0, loc.lastIndexOf('/'));
+                    navigateTo = dir + navigateTo
+                    setTimeout(function(){
+                        window.open(navigateTo, '_blank');
+                    },1000)
                 },masterSpeed)
             }
         })
