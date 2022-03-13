@@ -5,8 +5,11 @@ function addEventsForNav() {
         nav.addEventListener("click", function() {
             const navData = $(nav).attr("data");
             let navigateTo = $(nav).attr("ref");
+            const allTextArea = $('.text-area');
+            allTextArea.css("opacity", "0.3");
             const textArea = $(`#${navData}`);
             textArea.css("visibility","visible");
+            textArea.css("opacity", 1);
             let text = textArea[0].innerHTML;
             text = String(text).substring(0,maxCharacters) + '...';
             textArea.empty();
